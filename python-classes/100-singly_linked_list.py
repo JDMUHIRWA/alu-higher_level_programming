@@ -5,22 +5,23 @@
 class Node:
     """Represent a node in a singly-linked list."""
 
-
-    def __init__(self, data, next_node=Node):
-                """Initialize a new Node.
+    def __init__(self, data, next_node=None):
+        """Initialize a new Node.
         Args:
             data (int): The data of the new Node.
             next_node (Node): The next node of the new Node.
         """
         self.data = data
-        self.next_node =  next_node
+        self.next_node = next_node
 
     @property
     def data(self):
-        return self.__data
+        """Get/set the data of the Node."""
+        return (self.__data)
+
     @data.setter
     def data(self, value):
-        if not isinstance(value, int)
+        if not isinstance(value, int):
             raise TypeError("data must be an integer")
         self.__data = value
 
