@@ -2,7 +2,6 @@
 """Write a class Square that defines a square by"""
 
 
-
 class Square:
     """Private instance attribute: size
     Instantiation with size (no type/value verification)"""
