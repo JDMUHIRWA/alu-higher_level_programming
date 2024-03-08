@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ Write a class that defines a square"""
 
+
 class User:
     """The class defines a square"""
 
@@ -17,6 +18,8 @@ class User:
             raise TypeError("size must be an int")
         elif value < 0:
             raise ValueError("size must be >= 0")
+        else:
+            self.__size = value
 
     def area(self):
         return self.__size**2
