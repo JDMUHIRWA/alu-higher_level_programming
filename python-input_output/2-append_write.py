@@ -1,16 +1,14 @@
 #!/usr/bin/python3
-"""Defines a class-checking function."""
+"""Defines a file-appending function."""
 
 
-def is_same_class(obj, a_class):
-    """Check if an object is exactly an instance of a given class.
+def append_write(filename="", text=""):
+    """Appends a string to the end of a UTF8 text file.
     Args:
-        obj (any): The object to check.
-        a_class (type): The class to match the type of obj to.
+        filename (str): The name of the file to append to.
+        text (str): The string to append to the file.
     Returns:
-        If obj is exactly an instance of a_class - True.
-        Otherwise - False.
+        The number of characters appended.
     """
-    if type(obj) == a_class:
-        return True
-    return False
+    with open(filename, "a", encoding="utf-8") as f:
+        return f.write(text)
