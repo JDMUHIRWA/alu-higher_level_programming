@@ -1,9 +1,8 @@
-
 #!/usr/bin/python3
-"""Defines an object attribute lookup function."""
+"""Defines a text file-reading function."""
 
 
-def lookup(obj):
-    """Return a list of an object's available attributes."""
-    return (dir(obj))
-
+def read_file(filename=""):
+    """Print the contents of a UTF8 text file to stdout."""
+    with open(filename, encoding="utf-8") as f:
+        print(f.read(), end="")
