@@ -1,0 +1,23 @@
+#!/usr/bin/python
+
+def factorial(n):
+    #check if n is negative
+    if n<0:
+        return "Factorial is not defined for negative numbers"
+    
+    #initialization
+    result = 1
+    i = 1
+
+    #calculate the factorial for the 10 numbers
+    while i<=n:
+        result *= i
+        i += 1
+
+    return result
+
+#get the number from the user
+number = int(input("Enter a number"))
+
+#calculate and print factorial
+print("Factorial of", number, "is", factorial(number))
