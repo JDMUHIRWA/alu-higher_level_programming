@@ -1,9 +1,7 @@
-#!/usr/bin/env bash
-# Script to insert a new row in the first_table table
-
+--this is my script 
+--about inserting a new row in the first table
 # Get the database name from the command line argument
 db_name="$1"
-
 # Check if the database name was provided
 if [ -z "$db_name" ]; then
     echo "Error: Database name not provided"
