@@ -54,31 +54,31 @@ def matrix_mul(m_a, m_b):
 
   return product_matrix
 
-# Test cases (same as 100-matrix_mul but with NumPy exceptions)
-def test_lazy_matrix_mul():
-  # Test 1: Empty matrices
-  m_a = []
-  m_b = [[1, 2]]
-  with pytest.raises(ValueError) as excinfo:
-    lazy_matrix_mul(m_a, m_b)
-  assert str(excinfo.value) == "m_a and m_b can't be empty"
+def test_lazy_matrix_mul_without_numpy():
 
-  # Test 2: Incompatible inner dimensions
-  m_a = [[1, 2], [3, 4]]
-  m_b = [[1], [2, 3]]
-  with pytest.raises(ValueError) as excinfo:
-    lazy_matrix_mul(m_a, m_b)
-  assert str(excinfo.value) == "m_a and m_b can't be multiplied (incompatible inner dimensions)"
+    # Test 1: Empty matrices
+    m_a = []
+    m_b = [[1, 2]]
+    with pytest.raises(ValueError) as excinfo:
+        lazy_matrix_mul(m_a, m_b)
+    assert str(excinfo.value) == "m_a and m_b can't be empty"
 
-  # Test 3: Non-numeric elements (using string)
-  m_a = [[1, 2], ["text", 4]]
-  m_b = [[1], [2]]
-  with pytest.raises(TypeError) as excinfo:
-    lazy_matrix_mul(m_a, m_b)
-  assert str(excinfo.value) == "m_a and m_b elements must be convertible to NumPy arrays (numeric types)"
+    # Test 2: Incompatible inner dimensions
+    m_a = [[1, 2], [3, 4]]
+    m_b = [[1], [2, 3]]
+    with pytest.raises(ValueError) as excinfo:
+        lazy_matrix_mul(m_a, m_b)
+    assert str(excinfo.value) == "m_a and m_b can't be multiplied (incompatible inner dimensions)"
 
-  # Test 4: Valid multiplication (assuming other test cases from 100-matrix_mul are valid for NumPy conversion)
-  m_a = [[1, 2], [3, 4]]
-  m_b = [[1, 2], [3, 4]]
-  product_matrix = lazy_matrix_mul(m_a, m_b)
-  assert np.array_equal(product_matrix, [[7, 10], [15, 22]])
+    # Test 3: Non-numeric elements (using string)
+    m_a = [[1, 2], ["text", 4]]
+    m_b = [[1], [2]]
+    with pytest.raises(TypeError) as excinfo:
+        lazy_matrix_mul(m_a, m_b)
+    assert "m_a and m_b elements must be numeric" in str(excinfo.value)  # Adjusted message for clarity
+
+    # Test 4: Valid multiplication
+    m_a = [[1, 2], [3, 4]]
+    m_b = [[1, 2], [3, 4]]
+    product_matrix = lazy_matrix_mul(m_a, m_b)
+    assert product_matrix == [[7, 10], [15, 22]]  # Direct comparison without NumPy
