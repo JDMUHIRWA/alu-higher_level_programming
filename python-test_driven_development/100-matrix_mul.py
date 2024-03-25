@@ -56,6 +56,9 @@ def matrix_mul(m_a, m_b):
 
 # Test cases (same as 100-matrix_mul but with NumPy exceptions)
 def test_lazy_matrix_mul():
+  """testing the function if it works"""
+
+  
 #Valid Multiplication (2x3 * 3x2)
 m_a = [[1, 2, 3], [4, 5, 6]]
 m_b = [[1, 4], [2, 5], [3, 6]]
