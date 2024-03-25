@@ -10,13 +10,7 @@ def matrix_mul(m_a, m_b):
                  or is not a rectangle (rows with different lengths).
       ValueError: If m_a and m_b cannot be multiplied (different inner dimensions).
   """
-# Calculate the product matrix
-  product_matrix = [[0 for _ in range(len(m_b[0]))] for _ in range(len(m_a))]
-  for i in range(len(m_a)):
-      for j in range(len(m_b[0])):
-          for k in range(len(m_b)):
-              product_matrix[i][j] += m_a[i][k] * m_b[k][j]
-              
+
   # Check if m_a and m_b are lists
   if not isinstance(m_a, list) or not isinstance(m_b, list):
     raise TypeError("m_a must be a list and m_b must be a list")
@@ -50,6 +44,13 @@ def matrix_mul(m_a, m_b):
   num_rows_b = len(m_b)
   if num_cols_a != num_rows_b:
     raise ValueError("m_a and m_b can't be multiplied (incompatible inner dimensions)")
+
+  # Calculate the product matrix
+  product_matrix = [[0 for _ in range(len(m_b[0]))] for _ in range(len(m_a))]
+  for i in range(len(m_a)):
+      for j in range(len(m_b[0])):
+          for k in range(len(m_b)):
+              product_matrix[i][j] += m_a[i][k] * m_b[k][j]
 
   # Return the resulting product matrix
   return product_matrix
