@@ -18,9 +18,9 @@ def matrix_mul(m_a, m_b):
     raise TypeError("m_b must be a list")
 
   if not all(isinstance(row, list) for row in m_a):
-    raise TypeError("m_a must be lists of lists")
+    raise TypeError("m_a must be list of lists")
   if not all(isinstance(row, list) for row in m_b):
-    raise TypeError("m_b must be lists of lists")
+    raise TypeError("m_b must be list of lists")
 
 
   if not m_a or not m_b:
