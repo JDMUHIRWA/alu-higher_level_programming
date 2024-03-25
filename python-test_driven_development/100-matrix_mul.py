@@ -12,9 +12,10 @@ def matrix_mul(m_a, m_b):
   """
 
 
-  if not isinstance(m_a, list) or not isinstance(m_b, list):
-    raise TypeError("m_a must be a list and m_b must be a list")
-
+  if not isinstance(m_a, list):
+    raise TypeError("m_a must be a list")
+  if not isinstance(m_b, list):
+    raise TypeError("m_b must be a list")
 
   if not all(isinstance(row, list) for row in m_a) or not all(isinstance(row, list) for row in m_b):
     raise TypeError("m_a and m_b must be lists of lists")
@@ -33,7 +34,7 @@ def matrix_mul(m_a, m_b):
   num_cols_a = len(m_a[0]) if m_a else 0 
   if not all(len(row) == num_cols_a for row in m_a):
     raise TypeError("each row of m_a must be of the same size")
-  num_rows_b = len(m_b)  
+  num_rows_b = len(m_b[0]) if m_b else 0  
   if not all(len(row) == num_cols_a for row in m_b):
     raise TypeError("each row of m_b must be of the same size")
 
