@@ -11,19 +11,18 @@ def matrix_mul(m_a, m_b):
       ValueError: If m_a and m_b cannot be multiplied (different inner dimensions).
   """
 
-# Check if m_a is a list
+  # Check if m_a and m_b are lists
   if not isinstance(m_a, list):
     print("Matrix A is not a list.")
     raise TypeError("m_a must be a list")
   else:
     print("Matrix A is a list.")
 
-  # Check if m_b is a list
-  if not isinstance(m_b, list):
-    print("Matrix B is not a list.")
+  if not isinstance(m_b,list):
+    print('Matrix B is not a list.')
     raise TypeError("m_b must be a list")
   else:
-    print("Matrix B is a list.")
+    print('Matrix B is a list')
 
   # Check if m_a and m_b are lists of lists
   if not all(isinstance(row, list) for row in m_a) or not all(isinstance(row, list) for row in m_b):
