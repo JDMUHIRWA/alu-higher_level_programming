@@ -44,10 +44,7 @@ def matrix_mul(m_a, m_b):
   num_cols_a = len(m_a[0])  
   num_rows_b = len(m_b)
   if num_cols_a != num_rows_b:
-    raise ValueError("m_a can't be empty")
-  if num_cols_a != num_cols_b:
-    raise ValueError("m_b can't be empty")
-
+    raise ValueError("m_a and m_b can't be multiplied")
   
   product_matrix = [[0 for _ in range(len(m_b[0]))] for _ in range(len(m_a))]
   for i in range(len(m_a)):
