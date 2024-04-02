@@ -1,0 +1,98 @@
+# Simulate destination data (replace with actual data source later)
+destinations = [
+    {"name": "Eiffel Tower", "category": "Landmark", "rating": 4.8},
+    {"name": "Great Wall of China", "category": "Landmark", "rating": 4.7},
+    {"name": "Taj Mahal", "category": "Landmark", "rating": 4.9},
+    {"name": "Louvre Museum", "category": "Museum", "rating": 4.6},
+    {"name": "British Museum", "category": "Museum", "rating": 4.5},
+]
+
+# Function to display the main menu
+def main_menu():
+  print("\nVirtual Tour Guide:")
+  print("1. Read All Destinations")
+  print("2. Search Destinations by Category")
+  print("3. Search Destinations by Query")
+  print("4. Add Destination (placeholder)")  # Placeholder for future functionality
+  print("5. Get Categories")
+  print("6. Get Recommended Places (High Ratings)")  # Placeholder for future functionality (using in-memory data)
+  print("7. Calculate Destination Time (placeholder)")  # Placeholder for future functionality
+  print("8. Get Menu (placeholder)")  # Placeholder for future functionalities
+  print("0. Exit")
+  choice = input("Enter your choice (1-8 or 0): ")
+  return choice
+
+# Function to read all destinations from the simulated data
+def read_all_destinations():
+  if destinations:
+    print("\nAll Destinations:")
+    for destination in destinations:
+      print(f"- {destination['name']} ({destination['category']}) - Rating: {destination['rating']:.1f}")
+  else:
+    print("\nNo destinations found.")
+
+# Function to search destinations by category
+def search_by_category():
+  categories = set(destination["category"] for destination in destinations)  # Extract unique categories
+  category = input("\nEnter category (or leave blank to see all): ")
+  if category:
+    filtered_destinations = [
+        destination for destination in destinations if destination["category"] == category
+    ]
+  else:
+    filtered_destinations = destinations
+  if filtered_destinations:
+    print("\nSearch Results:")
+    for destination in filtered_destinations:
+      print(f"- {destination['name']} ({destination['category']}) - Rating: {destination['rating']:.1f}")
+  else:
+    print("\nNo destinations found in that category.")
+
+# Function to search destinations by user query
+def search_by_query():
+  query = input("\nEnter search query: ")
+  search_term = query.lower()  # Make search case-insensitive
+  filtered_destinations = [
+      destination
+      for destination in destinations
+      if search_term in destination["name"].lower() or search_term in destination["category"].lower()
+  ]
+  if filtered_destinations:
+    print("\nSearch Results:")
+    for destination in filtered_destinations:
+      print(f"- {destination['name']} ({destination['category']}) - Rating: {destination['rating']:.1f}")
+  else:
+    print("\nNo destinations matching your query found.")
+
+# Function to get all categories from the simulated data
+def get_categories():
+  categories = set(destination["category"] for destination in destinations)  # Extract unique categories
+  if categories:
+    print("\nAvailable Categories:")
+    for category in categories:
+      print(category)
+  else:
+    print("\nNo categories found.")
+
+# Function to get recommended places (placeholder, uses in-memory data for high ratings)
+def get_recommended_places():
+  sorted_destinations = sorted(destinations, key=lambda d: d["rating"], reverse=True)
+  print("\nRecommended Places (High Ratings):")
+  for i in range(3):  # Recommend top 3 destinations (can be adjusted)
+    if i < len(sorted_destinations):
+      destination = sorted_destinations[i]
+      print(f"- {destination['name']} ({destination['category']}) - Rating: {destination['rating']:.1f}")
+    else:
+      break  # No more destinations to recommend
+
+# Main program loop
+while True:
+  choice = main_menu()
+  if choice == "1":
+    read_all_destinations()
+  elif choice == "2":
+    search_by_category()
+  elif choice == "3":
+    search_by_query()
+  elif choice == "4":
+    search_by_query()
